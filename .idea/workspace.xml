@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b065bf1a-01fe-44be-a2fe-ccaa597f3d30" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/GraphHopperRouting.js" afterPath="$PROJECT_DIR$/js/GraphHopperRouting.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/demo.js" afterPath="$PROJECT_DIR$/js/demo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-    </list>
+    <list default="true" id="b065bf1a-01fe-44be-a2fe-ccaa597f3d30" name="Default" comment="" />
     <ignored path="directions-api-js-client.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,7 +26,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="10" selection-start="17" selection-end="17" vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="1320">
+            <state line="4" column="93" selection-start="222" selection-end="222" vertical-scroll-proportion="5.625" vertical-offset="195" max-vertical-offset="1320">
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -119,7 +115,7 @@
       <file leaf-file-name="demo.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/demo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="606" selection-end="606" vertical-scroll-proportion="-1.0594796" vertical-offset="840" max-vertical-offset="6885">
+            <state line="72" column="5" selection-start="2450" selection-end="2496" vertical-scroll-proportion="0.8085502" vertical-offset="645" max-vertical-offset="6885">
               <folding />
             </state>
           </provider>
@@ -362,17 +358,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="10" selection-start="17" selection-end="17" vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="1320">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/GHUtil.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="18" selection-start="1584" selection-end="1585" vertical-scroll-proportion="-7.0384617" vertical-offset="657" max-vertical-offset="1815">
@@ -387,9 +372,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="93" selection-start="222" selection-end="222" vertical-scroll-proportion="5.625" vertical-offset="195" max-vertical-offset="1320">
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="606" selection-end="606" vertical-scroll-proportion="-1.0594796" vertical-offset="840" max-vertical-offset="6885">
+        <state line="72" column="5" selection-start="2450" selection-end="2496" vertical-scroll-proportion="0.8085502" vertical-offset="645" max-vertical-offset="6885">
           <folding />
         </state>
       </provider>
