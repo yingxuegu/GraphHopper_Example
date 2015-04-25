@@ -29,7 +29,7 @@ $(document).ready(function (e) {
     // Sign-up for free and get your own key: https://graphhopper.com/#directions-api
     //
     var defaultKey = "2929232f-74f8-44cc-8850-76709888e2de";
-    var profile = "car";
+    var profile = "bike";
 
     // create a routing client to fetch real routes, elevation.true is only supported for vehicle bike or foot
     var ghRouting = new GraphHopperRouting({key: defaultKey, host: host, vehicle: profile, elevation: false});
@@ -70,7 +70,7 @@ $(document).ready(function (e) {
 });
 
 function setupRoutingAPI(map, ghRouting) {
-    map.setView([52.521235, 13.3992], 12);
+    map.setView([44.897912, -68.670838], 16);
     var iconObject = L.icon({
         iconUrl: './img/marker-icon.png',
         shadowSize: [50, 64],
@@ -260,7 +260,7 @@ function setupTourOptimizationAPI(map, ghOptimization, ghRouting) {
             }
 
             var ghCallback = createGHCallback(routeStyle);
-            ghRouting.doRequest(ghCallback, {instructions: false});
+            ghRouting.doRequest(ghCallback, {instructions: true});
         }
     };
 
