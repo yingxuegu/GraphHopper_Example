@@ -1,66 +1,115 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>JavaScript examples for the GraphHopper Directions API </title>
-        <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>                
-
+        <title>JavaScript examples for the Directions API </title>
+        <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
         <link rel="stylesheet" href="css/leaflet.css?v=0.7.3" />
-        <script type="text/javascript" src="js/leaflet.js?v=0.7.3"></script>        
-
+        <script type="text/javascript" src="js/leaflet.js?v=0.7.3"></script>
         <link rel="stylesheet" href="css/style.css" />
-
         <script type="text/javascript" src="js/GHUtil.js"></script>
         <script type="text/javascript" src="js/GraphHopperRouting.js"></script>
         <script type="text/javascript" src="js/GraphHopperMatrix.js"></script>
-        <script type="text/javascript" src="js/GraphHopperGeocoding.js"></script>        
-
+        <script type="text/javascript" src="js/GraphHopperGeocoding.js"></script>
         <!-- swagger is currently only required for GraphHopperOptimization -->
         <script type="text/javascript" src="js/swagger-client.min.js"></script>
         <script type="text/javascript" src="js/GraphHopperOptimization.js"></script>
-
         <script type="text/javascript" src="js/demo.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+        <script>
+            var geocoder;
+            var map;
+            var orilat;
+            var orilng;
+            var defaultKey = "d774d476-26e5-47f8-9043-85de1130aed1";
+            var profile = "bike";
+            var lmap;
+            var tra = 0;
+
+
+
+            var host = "https://graphhopper.com/api/1";
+            if (!host) {
+                if (location.port === '') {
+                    host = location.protocol + '//' + location.hostname;
+                } else {
+                    host = location.protocol + '//' + location.hostname + ":" + location.port;
+                }
+            }
+
+            // create a routing client to fetch real routes, elevation.true is only supported for vehicle bike or foot
+            var ghRouting = new GraphHopperRouting({key: defaultKey, host: host, vehicle: profile, elevation: false});
+
+            var iconObject = L.icon({
+                iconUrl: './img/marker-icon.png',
+                shadowSize: [50, 64],
+                shadowAnchor: [4, 62],
+                iconAnchor: [12, 40]
+            });
+
+
+
+            // var deslat, deslon;
+            function initialize() {
+                geocoder = new google.maps.Geocoder();
+                var latlng = new google.maps.LatLng(44.897912, -68.670838);
+                var mapOptions = {
+                    zoom: 16,
+                    center: latlng
+                }
+                map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            }
+
+
+
+
+            function originCodeAddress() {
+                var address = document.getElementById('origin').value;
+                geocoder.geocode( { 'address': address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        orilat = results[0].geometry.location.lat();
+                        //alert(orilat);
+                        orilng = results[0].geometry.location.lng();
+                        //alert(orilng);
+                        //ghRouting.addPoint(new GHInput(orilat, orilng));
+                        //L.marker(results[0].geometry.location, {icon: iconObject}).addTo(routingLayer);
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+
+            function destinationCodeAddress() {
+                var address = document.getElementById('destination').value;
+                geocoder.geocode( { 'address': address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        alert(results[0].geometry.location.lat())
+                        des = results[0].geometry.location.lat()
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+
+
     </head>
-    <body>        
+    <body>
+        <p id="weather"></p>
+        <div id="ori">
+            <input id="origin" type="textbox" value="">
+            <input type="button" value="origin" onclick="originCodeAddress()">
+        </div>
+        <div id="navigation">
+            <input type="button" value="navigation" onclick="testtest()">
+        </div>
+
+
         <div id="main">
-            <div id="logo">
-                <img src="https://graphhopper.com/img/header.png" alt="GraphHopper Logo"/>                                   
-
-                <div id="enter_key">
-                    <div>
-                        <img id="custom_key_enabled" class="hide" src="img/included.png" alt="using custom API key"/>
-                        <input id="custom_key_input" placeholder="Enter your API key"/>
-                        <button id="custom_key_button">Set</button>
-                    </div>
-                    <div id="get_key_link">
-                        <a href="https://graphhopper.com/#directions-api">Get an API key here!</a>
-                    </div>
-                </div>
-
-            </div>            
-
-            <div class="left horizontal"> 
-                Documentation:
-                <ul>
-                    <li><a href="https://github.com/graphhopper/directions-api/blob/master/README.md">Documentation</a></li>                    
-                    <li><a href="https://github.com/graphhopper/directions-api/blob/master/README.md#api-clients-and-examples">API Clients</a></li>
-                </ul>
-            </div>
-
-            <div class="clear"></div>
-            <div class="horizontal">
-                Live Examples:
-                <ul class="tabs-menu">
-                    <li class="current"><a href="#routing">Routing API</a></li>
-                    <li><a href="#optimization">Tour Optimization API</a></li>
-                    <li><a href="#matrix">Matrix API</a></li>
-                    <li><a href="#geocoding">Geocoding API</a></li>                    
-                </ul>
-            </div>
-
-            <div id="routing" class="tab-content">
+            <div id="routing">
                 <h2>Routing API</h2>
 
-                <div>Click on the map!</div>
+                <div>Click on the map!!!!!!</div>
 
                 <div id="routing-response" style="float: right; padding-left: 20px;">
 
@@ -69,15 +118,28 @@
                 </div>
 
                 <div id="routing-map" style="cursor: default; height:600px; width: 800px;"></div>
-
-                <div id="instructions-header">
-                    Click to see instructions for route
-                    <div id="instructions" class="hide"></div>
-                </div>
+                   Click to see instructions for route
+                    <div id="instructions" ></div>
 
             </div>
+        </div>
 
 
         </div>
     </body>
+    <script>
+        var callbackFunction = function(data) {
+            var wea = data.query.results.channel;
+            document.getElementById("weather").innerHTML = "weather:  "+wea.item.condition.text;
+            //alert(JSON.stringify(wea.item.condition.text));
+        };
+
+
+
+    </script>
+
+    <script src="https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text='bangor, me')&format=json&callback=callbackFunction"></script>
+
+
+
 </html>

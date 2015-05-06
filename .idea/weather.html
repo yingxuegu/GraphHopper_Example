@@ -1,0 +1,8 @@
+<script>
+    var callbackFunction = function(data) {
+        var wea = data.query.results.channel;
+        alert(JSON.stringify(wea.item.condition.text));
+    };
+</script>
+
+<script src="https://query.yahooapis.com/v1/public/yql?q=select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text='bangor, me')&format=json&callback=callbackFunction"></script>
